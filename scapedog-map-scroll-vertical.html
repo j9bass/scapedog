@@ -1,0 +1,234 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Scapedog Demo - Scroll Map</title>
+	<script src="https://kit.fontawesome.com/6040eabcf1.js" crossorigin="anonymous"></script>  
+	<link href="images/trashcan-favicon.svg" rel="icon">
+    <link rel="stylesheet" href="scapedog-demo.css" type="text/css">
+	  
+	<style>
+		/* CSS should go in your main CSS file*/
+		
+		/* interactive map css */
+		
+		
+		/* CSS for the div that contains the map as a background image and the marker icons */
+		
+		.worldmap-container {
+			width: 900px;
+			height: 600px;
+			border: solid 2px magenta;
+			overflow: scroll;
+			position: relative;			
+			}
+		
+				
+		.worldmap {
+			width: 1600px; /* note: div is wider than the background image; not necessary, but I wanted to have extra empty (light blue) space on the right of the image = "Terra Incognita") */
+			height: 1800px;
+			border: solid #5a5a5a 0px;
+			background: url(images/scapedog-map-red.svg) no-repeat;
+			background-color: lightblue;
+			background-size: 1200px 1800px;
+			padding: 0;
+			margin: 0; /* adjust as needed */
+			position: relative;
+		}
+		
+		.worldmap-nav {
+			margin: 0 0 1em;
+		}
+		
+		/* CSS for marker icons (note: each icon belongs to the worldmap-item class but has its own id attribute as well) */
+		
+		.worldmap-item {
+			font-size: 44px;  /* controls the size of the icon */
+			position: absolute;
+			}
+		
+		#worldmap-item-newyork {
+			top: 276px;
+			left: 752px;
+			}
+	
+		#worldmap-item-london {
+			top: 740px;
+			left: 985px;
+			}
+		
+		#worldmap-item-capetown {
+			top: 1134px;
+			left: 1050px;		}
+		
+		/* unused elements in this demo */
+			
+		#worldmap-item-beijing {
+			top: 602px;
+			left: 1176px;
+			}	
+		#worldmap-item-vladivostock {
+			top: 322px;
+			left: 1076px;
+			}	
+
+		/* sets colors for the marker icon and hover behavior for the span */
+
+		.icon-blue {color:#F32196;}
+		.icon-blue span {display: none;}
+		.icon-blue:hover span {display: inline;}
+		.icon-blue:hover {color:#2196F3;}
+		
+		/* styles the span that appears when user hovers over the icon: here, a text box to the right of the icon */
+		
+		.worldmap-item span {
+			font-size: 10px; 
+			color: #f32196; 
+			float: right; 
+			background: #efecb4; 
+			padding: 3px; 
+			margin-left: 3px;
+			}
+		
+		
+		/* styling for caption under the map */
+		
+		.worldmap-caption {
+			display: flex;
+			justify-content: space-between;
+			}
+		
+		.credit-caption, .worldmap-subnav {font-size: 75%; margin: .25em 0;}
+		.credit-caption a, .worldmap-subnav a {color: #8a8a8a; text-decoration: none;}
+		.credit-caption a:hover, .worldmap-subnav a:hover {color: #bababa; text-decoration: underline;}
+		
+		/* styling for catalog of profiles (lower region of the page) */
+		
+		.location-catalog h3 {color:#2196F3;}
+		
+		.location-profile {
+			display: flex;
+			gap: 18px;
+			margin: 0 0 2em;
+		}
+						
+		.location-image {
+			border: solid #cacaca 1px;
+			width: 300px;
+			height: 300px; 
+			flex-grow: 0;
+			flex-shrink: 0;
+			}
+	
+		.location-description p {
+			margin-top: 0;
+		}
+
+	  </style>
+	  
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="site-header">
+        <nav class="site-nav">
+			<a href="twp-home.html">
+		   		<img class="site-logo" src="images/trashcan-logo.svg" alt="Trash of the Week Project">
+			</a>
+			<a href="twp-reviews.html">Reviews</a>
+			<a href="twp-gallery.html">Pictorial</a>
+			<a href="twp-survey.html">Survey</a>
+			<a href="twp-about.html">About</a>
+        </nav>
+      </header>
+		
+      <main>
+
+		  <h1 class="primary-statement">Great <em>Trash</em> from around the World</h1>
+		  
+		<section class="worldmap-intro" id="worldmap-intro">
+			
+			
+			<nav class="worldmap-nav">
+				Treasure: <a href="#worldmap-item-newyork"><i class="fa-solid fa-bolt icon-blue"></i></a> | 
+				<a href="#worldmap-item-london"><i class="fa-solid fa-circle-radiation icon-blue"></i></a> | 
+				<a href="#worldmap-item-capetown"><i class="fa-solid fa-skull-crossbones icon-blue"></i></a>
+					</nav>		
+				
+							
+			<div class="worldmap-container">
+			
+				<div class="worldmap">
+			
+					<a href="#newyork">
+						<i class="fa-solid fa-bolt icon-blue worldmap-item" id="worldmap-item-newyork">
+						<span>New York</span>
+						</i>
+					</a>
+					<a href="#london">
+						<i class="fa-solid fa-circle-radiation icon-blue worldmap-item" id="worldmap-item-london">
+						<span>London  <i class="fa-solid fa-user-ninja"></i> <i class="fa-solid fa-user-ninja"></i> <i class="fa-solid fa-user-ninja"></i></span>
+						</i>
+					</a>
+					<a href="#capetown">
+						<i class="fa-solid fa-skull-crossbones icon-blue worldmap-item" id="worldmap-item-capetown">
+						<span><i class="fa-solid fa-skull-crossbones"></i> Cape Town</span>
+						</i>
+					</a>
+					
+					<!-- unused elements in this demo -->
+					<!--
+					<a href="#beijing">
+						<i class="fa-solid fa-location-dot icon-blue worldmap-item" id="worldmap-item-beijing">
+						<span>Beijing</span>
+						</i>
+					</a>
+					<a href="#vladivostock">
+						<i class="fa-solid fa-location-dot icon-blue worldmap-item" id="worldmap-item-vladivostock">
+						<span><i class="fa-solid fa-skull-crossbones"></i> Vladivostock</span>
+						</i>
+					</a> -->
+					
+					
+				</div>
+			</div><!-- container ends -->
+			
+			<div class="worldmap-caption">
+				<p class="credit-caption">World map graphic by Al MacDonald via <a href="https://en.m.wikipedia.org/wiki/File:World_map_-_low_resolution.svg" target="_blank">Wikipedia</a></p>
+				<p class="worldmap-subnav"><a href="#worldmap-intro">Back to top</a></p>
+			</div><!-- worldmap caption ends -->
+			
+			<p>This visual essay documents where in the world I acquired some of the items I've thrown away, recycled, or donated since starting this project in January 2019. The <strong>catalog</strong> below documents how, where, and when each item was acquired, why it was acquired, and how it was disposed off.</p>	
+			<p>If you find this essay interesting, I recommend taking a look at its companion essay, <a href="#">Great Trash Cans from around the World</a>, which documents some of the finer receptacles I've encountered on my travels.</p>
+			
+		  </section>	
+
+		  <section class="location-catalog">
+			  <h3 id="newyork">New York, USA</h3>
+
+			  <div class="location-profile">
+				  <div class="location-image"><img src="images/newyork-trash-300.jpg" alt="Photo of trash in New York"></div>			<div class="location-description"><p>Pellentesque habitant <a href="https://en.wikipedia.org/wiki/New_York_City" target="_blank">New York City</a> morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate <a href="">magna eros</a> eu erat. Aliquam erat volutpat, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. </p></div>
+			  </div>		
+
+			  <h3 id="london">London, UK</h3>
+			  <div class="location-profile">
+				  <div class="location-image"><img src="images/london-trash-300.jpg" alt="Photo of trash in London"></div>			
+				  <div class="location-description"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada <a href="https://en.wikipedia.org/wiki/London" target="_blank">London</a> fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis <a href="">tempus lacus</a> enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.</p></div>
+			  </div>	
+
+			  <h3 id="capetown">Cape Town, South Africa</h3>
+			  <div class="location-profile">
+				  <div class="location-image"><img src="images/capetown-trash-300.jpg" alt="Photo of trash in Cape Town"></div>			<div class="location-description"><p>Pellentesque habitant morbi <a href="https://en.wikipedia.org/wiki/Cape_Town" target="_blank">Cape Town</a> tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, <a href="">tempor sit amet</a>, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat.</p></div>
+			  </div>	
+		  </section>	
+		  
+			
+      </main>
+      <footer class="site-footer">
+		  <p>&copy; 2023 Trash of the Week Projections</p>
+      </footer>
+    </div> <!-- wrapper ends -->
+  </body>
+</html>
