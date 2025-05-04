@@ -1,0 +1,148 @@
+/* CSS should go in your main CSS file*/
+		
+		/* interactive map css */
+		
+		
+		/* CSS for the div that contains the map as a background image and the marker icons */
+		
+		.worldmap {
+			width: 914px;
+			height: 600px;
+			border: solid #5a5a5a 1px;
+			background: url(images/wiki-worldmap.svg) no-repeat;
+			background-size: 914px 600px;
+			padding: 0;
+			margin: 0; /* adjust as needed */
+			position: relative;
+		}
+		
+		
+		/* CSS for marker icons (note: each icon belongs to the worldmap-item class but has its own id attribute as well) */
+		
+		.worldmap-item {
+			position: absolute;
+			}
+			
+		.worldmap-item img {
+			height: 36px;  /* controls the size of the SVG icon */
+		}
+		
+		.worldmap-item i {
+			font-size: 24px;  /* controls the size of the Fontawesome icon */
+			}
+			
+		
+		/* positioning for the worldmap items on the map */
+		
+		
+		#worldmap-item-vladivostok {
+			top: 107px;
+			left: 452px;
+			}
+		
+		
+		#worldmap-item-newyork {
+			top: 176px;
+			left: 252px;
+			}
+	
+		#worldmap-item-london {
+			top: 149px;
+			left: 425px;
+			}
+		
+		#worldmap-item-capetown {
+			top: 402px;
+			left: 476px;
+			}
+
+		/* for Font Awesome icons: sets colors for the marker icon in default and hover states */
+
+		.icon-blue {color:#F32196;}
+		.icon-blue:hover {color:#2196F3;}
+		
+			
+		/* styles the span that appears when user hovers over the icon: here, a text box (label) to the right of the icon */
+		
+		.worldmap-item span {
+			font-size: 10px; 
+			color: #f32196; 
+			float: right; 
+			background: #efecb4; 
+			padding: 0 4px; 
+			margin-left: 3px;
+			display: none;
+			position: relative; /* allows the z-index property to work */
+			z-index: 100; /* prevents location icons/markers from overlap the span when it displays */
+			}
+			
+		.worldmap-item:hover span {	
+			display: inline-block;
+			}
+			
+		/* styling for any Font Awesome icons inside the label */
+		
+		.worldmap-item span i{	
+			font-size: 10px;
+			color: #000; 
+			}		
+			
+		/* alternative styling for a popup box rather than just a label when "worldmap-popup" class is applied to the span */
+			
+		.worldmap-item span.worldmap-popup {
+			font-size: 12px;
+			width: 200px; /* here I've set the span to match the width of the image inside the span, but other designs are possible*/
+			margin-top: -50px; /* the negative value moves the top/start of the popup box up 50px for better alignment with the icon */
+			padding: 3px 9px; /* some extra padding for the popup version */
+			}	
+						
+		.worldmap-item span img {
+			width: 200px;	
+			height: 200px;			
+			}
+		.worldmap-item span h2 {	
+			margin: 0;
+		}
+		
+		.worldmap-item span p {
+			line-height: 1.65em;
+			margin: 0 0 1em;
+		}
+				
+			/* styling for any Font Awesome icons inside the popup box */
+		
+		.worldmap-item span.worldmap-popup i{	
+			font-size: 12px;
+			}	
+		
+		
+		/* styling for credit caption under the map */
+		
+		.credit-caption {font-size: 75%; margin: .25em 0;}
+		.credit-caption a {color: #8a8a8a; text-decoration: none;}
+		.credit-caption a:hover {color: #bababa; text-decoration: underline;}
+		
+		.location-catalog h3 {color:#2196F3;}
+		
+		.location-profile {
+			display: flex;
+			gap: 18px;
+			margin: 0 0 2em;
+		}
+						
+		.location-image {
+			border: solid #cacaca 1px;
+			width: 300px;
+			height: 300px; 
+			flex-grow: 0;
+			flex-shrink: 0;
+			}
+	
+		.location-description p {
+			margin-top: 0;
+		}
+
+		.worldmap-return {
+			display: block;
+			text-align: right;
+		}
